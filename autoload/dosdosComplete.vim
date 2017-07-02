@@ -17,7 +17,7 @@ function! s:complePos(regexp)
 endfunction
 
 function! s:listDosHelp() abort
-  let [ret, res] = [[], s:splitn(system('help'))]
+  let [ret, res] = [[], s:splitn(iconv(system('help'), 'cp932', &enc))]
   let lower = get(g:, 'dosdos_complete_lower', 1)
   for i in range(len(res))
     let line = res[i]
